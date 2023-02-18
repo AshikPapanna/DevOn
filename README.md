@@ -6,5 +6,5 @@ Please use .net core sdk version 7.0.102 running in the system. Please note that
 Navigate to the DevOn.API folder in cmd and run "dotnet run"
 
 # URL
-Once its start running at  http://localhost:4040/ after this serve the UI application.
+The application will start running at  http://localhost:4040/, After this serve the UI application.
 
