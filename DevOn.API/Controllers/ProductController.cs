@@ -28,13 +28,7 @@ namespace DevOn.API.Controllers
             return _productService.GetAllProducts();
         }
 
-        // GET api/<ProductController>/5
-        [HttpGet("{id}")]
-        public void Get(int id)
-        {
-           // return .Get(id);
-        }
-
+        
         // POST api/<ProductController>
         [HttpPost]
         public ActionResult Post([FromBody] ProductVM pro)
@@ -44,11 +38,7 @@ namespace DevOn.API.Controllers
 
         }
 
-        // PUT api/<ProductController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+       
 
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]

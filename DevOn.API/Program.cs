@@ -50,11 +50,11 @@ namespace DevOn.API
            // app.UseMiddleware<ExceptionHandler>();
 
             CreateDBIfNotExists(app);
-
+           
             // Configure the HTTP request pipeline.
             app.UseCors("AllowAllHeaders");
 
-           // app.UseHttpsRedirection();
+           
            
 
             app.UseAuthorization();
