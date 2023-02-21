@@ -6,6 +6,7 @@ using DevOn.Business.Models;
 using DevOn.Business.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,8 +34,15 @@ namespace DevOn.API.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] ProductVM pro)
         {
-            _productService.AddProduct(pro);
-            return Ok();
+            try
+            {
+                _productService.AddProduct(pro);
+                return Ok();
+            }
+            catch(ValidationException ex)
+            {
+               return UnprocessableEntity(ex.Message);
+            }
 
         }
 

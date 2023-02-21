@@ -2,7 +2,7 @@
 using DevOn.API.ViewModels;
 using DevOn.Business.Interfaces;
 using DevOn.Business.Models;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace DevOn.Business.Services
 {
@@ -34,6 +34,11 @@ namespace DevOn.Business.Services
                    };
         }
         public void AddProduct(ProductVM pro) {
+            var validationResult = Validate(pro);
+            if(validationResult.ErrorMessage != String.Empty)
+            {
+                throw new ValidationException(validationResult.ErrorMessage);
+            }
             var product = new Product()
             {
                 Name = pro.Name,
@@ -52,6 +57,16 @@ namespace DevOn.Business.Services
             var product=_productRepository.Get(id);
             _productRepository.Delete(product);
             _productRepository.SaveChanges();
+        }
+
+        public ValidationResult Validate(ProductVM p)
+        {
+            if (_productRepository.GetAll().Any(x => x.Name == p.Name))
+            {
+                return new ValidationResult("Product Name Should Be Unique.");
+            }
+            return new ValidationResult(string.Empty);
+            
         }
     }
 }

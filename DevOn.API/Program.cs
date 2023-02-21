@@ -47,7 +47,7 @@ namespace DevOn.API
             var app = builder.Build();
 
 
-           // app.UseMiddleware<ExceptionHandler>();
+            app.UseMiddleware<ExceptionHandler>();
 
             CreateDBIfNotExists(app);
            

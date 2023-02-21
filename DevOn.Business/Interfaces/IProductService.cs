@@ -1,4 +1,5 @@
 ﻿using DevOn.API.ViewModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace DevOn.API.Interfaces
 {
@@ -7,5 +8,6 @@ namespace DevOn.API.Interfaces
         void AddProduct(ProductVM pro);
         IEnumerable<ProductVM> GetAllProducts();
         void DeleteProduct(int id);
+        ValidationResult Validate(ProductVM p);
     }
 }
